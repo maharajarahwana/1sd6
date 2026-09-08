@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1sd6</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    canvas {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+</style>
+</head>
+
+<body>
+
+<canvas id="canvas" width="500" height="300"></canvas>
+
+<script>
+
+// =====================================================
+// DAFTAR NADA DIATONIK C
+// SENAR 6 FRET 0 SAMPAI SENAR 1 FRET 5
+// =====================================================
+
+const nada = [
+
+    // =================================================
+    // SENAR 6
+    // =================================================
+
+    {
+        nama: "E",
+        senar: 6,
+        fret: 0,
+        frekuensi: 82.41
+    },
+
+    {
+        nama: "F",
+        senar: 6,
+        fret: 1,
+        frekuensi: 87.31
+    },
+
+    {
+        nama: "G",
+        senar: 6,
+        fret: 3,
+        frekuensi: 98.00
+    },
+
+    {
+        nama: "A",
+        senar: 6,
+        fret: 5,
+        frekuensi: 110.00
+    },
+
+
+    // =================================================
+    // SENAR 5
+    // =================================================
+
+    {
+        nama: "A",
+        senar: 5,
+        fret: 0,
+        frekuensi: 110.00
+    },
+
+    {
+        nama: "B",
+        senar: 5,
+        fret: 2,
+        frekuensi: 123.47
+    },
+
+    {
+        nama: "C",
+        senar: 5,
+        fret: 3,
+        frekuensi: 130.81
+    },
+
+    {
+        nama: "D",
+        senar: 5,
+        fret: 5,
+        frekuensi: 146.83
+    },
+
+
+    // =================================================
+    // SENAR 4
+    // =================================================
+
+    {
+        nama: "D",
+        senar: 4,
+        fret: 0,
+        frekuensi: 146.83
+    },
+
+    {
+        nama: "E",
+        senar: 4,
+        fret: 2,
+        frekuensi: 164.81
+    },
+
+    {
+        nama: "F",
+        senar: 4,
+        fret: 3,
+        frekuensi: 174.61
+    },
+
+    {
+        nama: "G",
+        senar: 4,
+        fret: 5,
+        frekuensi: 196.00
+    },
+
+
+    // =================================================
+    // SENAR 3
+    // =================================================
+
+    {
+        nama: "G",
+        senar: 3,
+        fret: 0,
+        frekuensi: 196.00
+    },
+
+    {
+        nama: "A",
+        senar: 3,
+        fret: 2,
+        frekuensi: 220.00
+    },
+
+    {
+        nama: "B",
+        senar: 3,
+        fret: 4,
+        frekuensi: 246.94
+    },
+
+    {
+        nama: "C",
+        senar: 3,
+        fret: 5,
+        frekuensi: 261.63
+    },
+
+
+    // =================================================
+    // SENAR 2
+    // =================================================
+
+    {
+        nama: "B",
+        senar: 2,
+        fret: 0,
+        frekuensi: 246.94
+    },
+
+    {
+        nama: "C",
+        senar: 2,
+        fret: 1,
+        frekuensi: 261.63
+    },
+
+    {
+        nama: "D",
+        senar: 2,
+        fret: 3,
+        frekuensi: 293.66
+    },
+
+    {
+        nama: "E",
+        senar: 2,
+        fret: 5,
+        frekuensi: 329.63
+    },
+
+
+    // =================================================
+    // SENAR 1
+    // =================================================
+
+    {
+        nama: "E",
+        senar: 1,
+        fret: 0,
+        frekuensi: 329.63
+    },
+
+    {
+        nama: "F",
+        senar: 1,
+        fret: 1,
+        frekuensi: 349.23
+    },
+
+    {
+        nama: "G",
+        senar: 1,
+        fret: 3,
+        frekuensi: 392.00
+    },
+
+    {
+        nama: "A",
+        senar: 1,
+        fret: 5,
+        frekuensi: 440.00
+    }
+
+];
+
+
+// =====================================================
+// CANVAS
+// =====================================================
+
+const canvas =
+    document.getElementById("canvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let target;
+
+let notSebelumnya = null;
+
+
+// =====================================================
+// PILIH NADA RANDOM
+// =====================================================
+
+function pilihNot() {
+
+    let pilihan;
+
+    do {
+
+        pilihan =
+            nada[
+                Math.floor(
+                    Math.random() * nada.length
+                )
+            ];
+
+    } while (
+        nada.length > 1 &&
+        pilihan === notSebelumnya
+    );
+
+    target = pilihan;
+
+    notSebelumnya = target;
+
+    gambarNot();
+}
+
+
+// =====================================================
+// GAMBAR NOT
+// =====================================================
+
+function gambarNot() {
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    // =================================================
+    // PARANADA
+    // =================================================
+
+    const x1 = 100;
+    const x2 = 440;
+
+    const jarak = 30;
+
+    const garisTengah = 120;
+
+
+    for (
+        let i = -2;
+        i <= 2;
+        i++
+    ) {
+
+        const y =
+            garisTengah +
+            i * jarak;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x1,
+            y
+        );
+
+        ctx.lineTo(
+            x2,
+            y
+        );
+
+        ctx.strokeStyle = "black";
+
+        ctx.lineWidth = 3;
+
+        ctx.stroke();
+    }
+
+
+    // =================================================
+    // KUNCI G
+    // =================================================
+
+    ctx.font = "115px serif";
+
+    ctx.fillStyle = "black";
+
+    ctx.fillText(
+        "𝄞",
+        35,
+        155
+    );
+
+
+    // =================================================
+    // POSISI NADA
+    // =================================================
+
+    const posisi = {
+
+        "D": 195,
+        "C": 210,
+        "B": 225,
+        "A": 240,
+        "G": 255,
+        "F": 270,
+        "E": 285
+
+    };
+
+
+    const y =
+        posisi[target.nama];
+
+    const x = 270;
+
+
+    // =================================================
+    // GARIS BANTU
+    // =================================================
+
+    let garisBantu = [];
+
+
+    if (target.nama === "C") {
+
+        garisBantu = [210];
+
+    }
+
+    else if (target.nama === "B") {
+
+        garisBantu = [210];
+
+    }
+
+    else if (target.nama === "A") {
+
+        garisBantu = [210, 240];
+
+    }
+
+    else if (target.nama === "G") {
+
+        garisBantu = [210, 240];
+
+    }
+
+    else if (target.nama === "F") {
+
+        garisBantu = [210, 240, 270];
+
+    }
+
+    else if (target.nama === "E") {
+
+        garisBantu = [210, 240, 270];
+
+    }
+
+
+    // =================================================
+    // GAMBAR GARIS BANTU
+    // =================================================
+
+    garisBantu.forEach(function(gy) {
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x - 35,
+            gy
+        );
+
+        ctx.lineTo(
+            x + 35,
+            gy
+        );
+
+        ctx.strokeStyle = "black";
+
+        ctx.lineWidth = 3;
+
+        ctx.stroke();
+
+    });
+
+
+    // =================================================
+    // KEPALA NOT
+    // =================================================
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        x,
+        y,
+        17,
+        12,
+        -0.3,
+        0,
+        Math.PI * 2
+    );
+
+    ctx.fill();
+
+
+    // =================================================
+    // BATANG NOT
+    // =================================================
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        x + 15,
+        y
+    );
+
+    ctx.lineTo(
+        x + 15,
+        y - 75
+    );
+
+    ctx.lineWidth = 4;
+
+    ctx.stroke();
+}
+
+
+// =====================================================
+// AUDIO
+// =====================================================
+
+let audioContext;
+
+let analyser;
+
+let microphone;
+
+let buffer;
+
+
+async function mulaiMikrofon() {
+
+    try {
+
+        const stream =
+            await navigator.mediaDevices
+            .getUserMedia({
+                audio: true
+            });
+
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+
+        microphone =
+            audioContext
+            .createMediaStreamSource(
+                stream
+            );
+
+
+        analyser =
+            audioContext
+            .createAnalyser();
+
+
+        analyser.fftSize = 4096;
+
+
+        microphone.connect(
+            analyser
+        );
+
+
+        buffer =
+            new Float32Array(
+                analyser.fftSize
+            );
+
+
+        deteksiNada();
+
+    }
+
+    catch (error) {
+
+        console.log(error);
+
+        document.body.innerHTML =
+            "<h2>Izinkan akses mikrofon</h2>";
+
+    }
+}
+
+
+// =====================================================
+// DETEKSI NADA
+// =====================================================
+
+function deteksiNada() {
+
+    analyser.getFloatTimeDomainData(
+        buffer
+    );
+
+
+    const frekuensi =
+        cariFrekuensi(
+            buffer,
+            audioContext.sampleRate
+        );
+
+
+    if (
+        frekuensi > 0
+    ) {
+
+        cekNada(frekuensi);
+
+    }
+
+
+    requestAnimationFrame(
+        deteksiNada
+    );
+}
+
+
+// =====================================================
+// CARI FREKUENSI
+// =====================================================
+
+function cariFrekuensi(
+    buffer,
+    sampleRate
+) {
+
+    let rms = 0;
+
+
+    for (
+        let i = 0;
+        i < buffer.length;
+        i++
+    ) {
+
+        rms +=
+            buffer[i] *
+            buffer[i];
+
+    }
+
+
+    rms =
+        Math.sqrt(
+            rms /
+            buffer.length
+        );
+
+
+    if (
+        rms < 0.015
+    ) {
+
+        return -1;
+
+    }
+
+
+    let bestOffset = -1;
+
+    let bestCorrelation = 0;
+
+
+    for (
+        let offset = 20;
+        offset < 1000;
+        offset++
+    ) {
+
+        let correlation = 0;
+
+
+        for (
+            let i = 0;
+            i < buffer.length - offset;
+            i++
+        ) {
+
+            correlation +=
+                buffer[i] *
+                buffer[i + offset];
+
+        }
+
+
+        correlation /=
+            buffer.length - offset;
+
+
+        if (
+            correlation >
+            bestCorrelation
+        ) {
+
+            bestCorrelation =
+                correlation;
+
+            bestOffset =
+                offset;
+
+        }
+
+    }
+
+
+    if (
+        bestOffset === -1
+    ) {
+
+        return -1;
+
+    }
+
+
+    return (
+        sampleRate /
+        bestOffset
+    );
+}
+
+
+// =====================================================
+// CEK NADA
+// =====================================================
+
+let waktuTerakhir = 0;
+
+
+function cekNada(freq) {
+
+    const sekarang =
+        Date.now();
+
+
+    if (
+        sekarang -
+        waktuTerakhir <
+        500
+    ) {
+
+        return;
+
+    }
+
+
+    let terdekat = null;
+
+    let selisihTerkecil =
+        Infinity;
+
+
+    for (
+        const n of nada
+    ) {
+
+        const selisih =
+            Math.abs(
+                freq -
+                n.frekuensi
+            );
+
+
+        if (
+            selisih <
+            selisihTerkecil
+        ) {
+
+            selisihTerkecil =
+                selisih;
+
+            terdekat = n;
+
+        }
+
+    }
+
+
+    // =================================================
+    // TOLERANSI 2,5%
+    // =================================================
+
+    if (
+        terdekat &&
+        selisihTerkecil /
+        terdekat.frekuensi <
+        0.025
+    ) {
+
+        waktuTerakhir =
+            sekarang;
+
+
+        // =================================================
+        // JIKA BENAR
+        // =================================================
+
+        if (
+            terdekat.nama ===
+            target.nama
+        ) {
+
+            pilihNot();
+
+        }
+
+
+        // =================================================
+        // JIKA SALAH
+        // =================================================
+
+        else {
+
+            // Nada tetap ditampilkan.
+
+        }
+
+    }
+
+}
+
+
+// =====================================================
+// MULAI OTOMATIS
+// =====================================================
+
+pilihNot();
+
+mulaiMikrofon();
+
+</script>
+
+</body>
+</html>

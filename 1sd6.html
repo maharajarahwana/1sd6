@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1sd6</title>
+<title>Diatonik C - 18 Posisi</title>
 
 <style>
     * {
@@ -40,208 +40,47 @@
 <script>
 
 // =====================================================
-// DAFTAR NADA DIATONIK C
+// DAFTAR NADA GITAR
 // SENAR 6 FRET 0 SAMPAI SENAR 1 FRET 5
 // =====================================================
 
 const nada = [
 
-    // =================================================
     // SENAR 6
-    // =================================================
+    { nama:"E", senar:6, fret:0, frekuensi:82.41 },
+    { nama:"F", senar:6, fret:1, frekuensi:87.31 },
+    { nama:"G", senar:6, fret:3, frekuensi:98.00 },
+    { nama:"A", senar:6, fret:5, frekuensi:110.00 },
 
-    {
-        nama: "E",
-        senar: 6,
-        fret: 0,
-        frekuensi: 82.41
-    },
-
-    {
-        nama: "F",
-        senar: 6,
-        fret: 1,
-        frekuensi: 87.31
-    },
-
-    {
-        nama: "G",
-        senar: 6,
-        fret: 3,
-        frekuensi: 98.00
-    },
-
-    {
-        nama: "A",
-        senar: 6,
-        fret: 5,
-        frekuensi: 110.00
-    },
-
-
-    // =================================================
     // SENAR 5
-    // =================================================
+    { nama:"A", senar:5, fret:0, frekuensi:110.00 },
+    { nama:"B", senar:5, fret:2, frekuensi:123.47 },
+    { nama:"C", senar:5, fret:3, frekuensi:130.81 },
+    { nama:"D", senar:5, fret:5, frekuensi:146.83 },
 
-    {
-        nama: "A",
-        senar: 5,
-        fret: 0,
-        frekuensi: 110.00
-    },
-
-    {
-        nama: "B",
-        senar: 5,
-        fret: 2,
-        frekuensi: 123.47
-    },
-
-    {
-        nama: "C",
-        senar: 5,
-        fret: 3,
-        frekuensi: 130.81
-    },
-
-    {
-        nama: "D",
-        senar: 5,
-        fret: 5,
-        frekuensi: 146.83
-    },
-
-
-    // =================================================
     // SENAR 4
-    // =================================================
+    { nama:"D", senar:4, fret:0, frekuensi:146.83 },
+    { nama:"E", senar:4, fret:2, frekuensi:164.81 },
+    { nama:"F", senar:4, fret:3, frekuensi:174.61 },
+    { nama:"G", senar:4, fret:5, frekuensi:196.00 },
 
-    {
-        nama: "D",
-        senar: 4,
-        fret: 0,
-        frekuensi: 146.83
-    },
-
-    {
-        nama: "E",
-        senar: 4,
-        fret: 2,
-        frekuensi: 164.81
-    },
-
-    {
-        nama: "F",
-        senar: 4,
-        fret: 3,
-        frekuensi: 174.61
-    },
-
-    {
-        nama: "G",
-        senar: 4,
-        fret: 5,
-        frekuensi: 196.00
-    },
-
-
-    // =================================================
     // SENAR 3
-    // =================================================
+    { nama:"G", senar:3, fret:0, frekuensi:196.00 },
+    { nama:"A", senar:3, fret:2, frekuensi:220.00 },
+    { nama:"B", senar:3, fret:4, frekuensi:246.94 },
+    { nama:"C", senar:3, fret:5, frekuensi:261.63 },
 
-    {
-        nama: "G",
-        senar: 3,
-        fret: 0,
-        frekuensi: 196.00
-    },
-
-    {
-        nama: "A",
-        senar: 3,
-        fret: 2,
-        frekuensi: 220.00
-    },
-
-    {
-        nama: "B",
-        senar: 3,
-        fret: 4,
-        frekuensi: 246.94
-    },
-
-    {
-        nama: "C",
-        senar: 3,
-        fret: 5,
-        frekuensi: 261.63
-    },
-
-
-    // =================================================
     // SENAR 2
-    // =================================================
+    { nama:"B", senar:2, fret:0, frekuensi:246.94 },
+    { nama:"C", senar:2, fret:1, frekuensi:261.63 },
+    { nama:"D", senar:2, fret:3, frekuensi:293.66 },
+    { nama:"E", senar:2, fret:5, frekuensi:329.63 },
 
-    {
-        nama: "B",
-        senar: 2,
-        fret: 0,
-        frekuensi: 246.94
-    },
-
-    {
-        nama: "C",
-        senar: 2,
-        fret: 1,
-        frekuensi: 261.63
-    },
-
-    {
-        nama: "D",
-        senar: 2,
-        fret: 3,
-        frekuensi: 293.66
-    },
-
-    {
-        nama: "E",
-        senar: 2,
-        fret: 5,
-        frekuensi: 329.63
-    },
-
-
-    // =================================================
     // SENAR 1
-    // =================================================
-
-    {
-        nama: "E",
-        senar: 1,
-        fret: 0,
-        frekuensi: 329.63
-    },
-
-    {
-        nama: "F",
-        senar: 1,
-        fret: 1,
-        frekuensi: 349.23
-    },
-
-    {
-        nama: "G",
-        senar: 1,
-        fret: 3,
-        frekuensi: 392.00
-    },
-
-    {
-        nama: "A",
-        senar: 1,
-        fret: 5,
-        frekuensi: 440.00
-    }
+    { nama:"E", senar:1, fret:0, frekuensi:329.63 },
+    { nama:"F", senar:1, fret:1, frekuensi:349.23 },
+    { nama:"G", senar:1, fret:3, frekuensi:392.00 },
+    { nama:"A", senar:1, fret:5, frekuensi:440.00 }
 
 ];
 
@@ -250,19 +89,53 @@ const nada = [
 // CANVAS
 // =====================================================
 
-const canvas =
-    document.getElementById("canvas");
-
-const ctx =
-    canvas.getContext("2d");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
 let target;
-
 let notSebelumnya = null;
 
 
 // =====================================================
-// PILIH NADA RANDOM
+// 18 POSISI NOT
+//
+// E = paling bawah
+// A = paling atas
+//
+// 18 posisi:
+//
+// E F G A B C D E F G A B C D E F G A
+//
+// =====================================================
+
+const posisiNot = [
+
+    { nama:"E", oktaf:2, y:285 },
+    { nama:"F", oktaf:2, y:270 },
+    { nama:"G", oktaf:2, y:255 },
+    { nama:"A", oktaf:2, y:240 },
+    { nama:"B", oktaf:2, y:225 },
+    { nama:"C", oktaf:3, y:210 },
+    { nama:"D", oktaf:3, y:195 },
+
+    { nama:"E", oktaf:3, y:180 },
+    { nama:"F", oktaf:3, y:165 },
+    { nama:"G", oktaf:3, y:150 },
+    { nama:"A", oktaf:3, y:135 },
+    { nama:"B", oktaf:3, y:120 },
+
+    { nama:"C", oktaf:4, y:105 },
+    { nama:"D", oktaf:4, y:90 },
+    { nama:"E", oktaf:4, y:75 },
+    { nama:"F", oktaf:4, y:60 },
+    { nama:"G", oktaf:4, y:45 },
+    { nama:"A", oktaf:4, y:30 }
+
+];
+
+
+// =====================================================
+// PILIH POSISI RANDOM
 // =====================================================
 
 function pilihNot() {
@@ -292,6 +165,67 @@ function pilihNot() {
 
 
 // =====================================================
+// CARI POSISI VISUAL
+// BERDASARKAN NAMA + FREKUENSI
+// =====================================================
+
+function cariPosisiVisual() {
+
+    let terdekat = null;
+    let selisihTerkecil = Infinity;
+
+    for (const p of posisiNot) {
+
+        const frekuensiPosisi = {
+
+            "E2":82.41,
+            "F2":87.31,
+            "G2":98.00,
+            "A2":110.00,
+            "B2":123.47,
+            "C3":130.81,
+            "D3":146.83,
+
+            "E3":164.81,
+            "F3":174.61,
+            "G3":196.00,
+            "A3":220.00,
+            "B3":246.94,
+            "C4":261.63,
+            "D4":293.66,
+
+            "E4":329.63,
+            "F4":349.23,
+            "G4":392.00,
+            "A4":440.00
+
+        };
+
+        const key =
+            p.nama + p.oktaf;
+
+        const freq =
+            frekuensiPosisi[key];
+
+        const selisih =
+            Math.abs(
+                target.frekuensi - freq
+            );
+
+        if (selisih < selisihTerkecil) {
+
+            selisihTerkecil = selisih;
+            terdekat = p;
+
+        }
+
+    }
+
+    return terdekat;
+}
+
+
+// =====================================================
 // GAMBAR NOT
 // =====================================================
 
@@ -313,7 +247,6 @@ function gambarNot() {
     const x2 = 440;
 
     const jarak = 30;
-
     const garisTengah = 120;
 
 
@@ -329,21 +262,14 @@ function gambarNot() {
 
         ctx.beginPath();
 
-        ctx.moveTo(
-            x1,
-            y
-        );
-
-        ctx.lineTo(
-            x2,
-            y
-        );
+        ctx.moveTo(x1, y);
+        ctx.lineTo(x2, y);
 
         ctx.strokeStyle = "black";
-
         ctx.lineWidth = 3;
 
         ctx.stroke();
+
     }
 
 
@@ -352,7 +278,6 @@ function gambarNot() {
     // =================================================
 
     ctx.font = "115px serif";
-
     ctx.fillStyle = "black";
 
     ctx.fillText(
@@ -363,24 +288,14 @@ function gambarNot() {
 
 
     // =================================================
-    // POSISI NADA
+    // POSISI NOT
     // =================================================
 
-    const posisi = {
-
-        "D": 195,
-        "C": 210,
-        "B": 225,
-        "A": 240,
-        "G": 255,
-        "F": 270,
-        "E": 285
-
-    };
-
+    const posisi =
+        cariPosisiVisual();
 
     const y =
-        posisi[target.nama];
+        posisi.y;
 
     const x = 270;
 
@@ -392,39 +307,60 @@ function gambarNot() {
     let garisBantu = [];
 
 
-    if (target.nama === "C") {
+    // -------------------------------------------------
+    // GARIS BAWAH
+    // -------------------------------------------------
 
-        garisBantu = [210];
+    if (y === 270) {
 
-    }
-
-    else if (target.nama === "B") {
-
-        garisBantu = [210];
+        garisBantu = [270];
 
     }
 
-    else if (target.nama === "A") {
+    else if (y === 255) {
 
-        garisBantu = [210, 240];
-
-    }
-
-    else if (target.nama === "G") {
-
-        garisBantu = [210, 240];
+        garisBantu = [270];
 
     }
 
-    else if (target.nama === "F") {
+    else if (y === 240) {
+
+        garisBantu = [240, 270];
+
+    }
+
+    else if (y === 225) {
+
+        garisBantu = [240, 270];
+
+    }
+
+    else if (y === 210) {
 
         garisBantu = [210, 240, 270];
 
     }
 
-    else if (target.nama === "E") {
+    else if (y === 195) {
 
         garisBantu = [210, 240, 270];
+
+    }
+
+
+    // -------------------------------------------------
+    // GARIS ATAS
+    // -------------------------------------------------
+
+    else if (y === 45) {
+
+        garisBantu = [30];
+
+    }
+
+    else if (y === 30) {
+
+        garisBantu = [30];
 
     }
 
@@ -448,7 +384,6 @@ function gambarNot() {
         );
 
         ctx.strokeStyle = "black";
-
         ctx.lineWidth = 3;
 
         ctx.stroke();
@@ -494,6 +429,7 @@ function gambarNot() {
     ctx.lineWidth = 4;
 
     ctx.stroke();
+
 }
 
 
@@ -502,11 +438,8 @@ function gambarNot() {
 // =====================================================
 
 let audioContext;
-
 let analyser;
-
 let microphone;
-
 let buffer;
 
 
@@ -566,6 +499,7 @@ async function mulaiMikrofon() {
             "<h2>Izinkan akses mikrofon</h2>";
 
     }
+
 }
 
 
@@ -587,9 +521,7 @@ function deteksiNada() {
         );
 
 
-    if (
-        frekuensi > 0
-    ) {
+    if (frekuensi > 0) {
 
         cekNada(frekuensi);
 
@@ -599,6 +531,7 @@ function deteksiNada() {
     requestAnimationFrame(
         deteksiNada
     );
+
 }
 
 
@@ -634,9 +567,7 @@ function cariFrekuensi(
         );
 
 
-    if (
-        rms < 0.015
-    ) {
+    if (rms < 0.015) {
 
         return -1;
 
@@ -644,7 +575,6 @@ function cariFrekuensi(
 
 
     let bestOffset = -1;
-
     let bestCorrelation = 0;
 
 
@@ -690,9 +620,7 @@ function cariFrekuensi(
     }
 
 
-    if (
-        bestOffset === -1
-    ) {
+    if (bestOffset === -1) {
 
         return -1;
 
@@ -703,6 +631,7 @@ function cariFrekuensi(
         sampleRate /
         bestOffset
     );
+
 }
 
 
@@ -731,14 +660,10 @@ function cekNada(freq) {
 
 
     let terdekat = null;
-
-    let selisihTerkecil =
-        Infinity;
+    let selisihTerkecil = Infinity;
 
 
-    for (
-        const n of nada
-    ) {
+    for (const n of nada) {
 
         const selisih =
             Math.abs(
@@ -777,27 +702,20 @@ function cekNada(freq) {
             sekarang;
 
 
-        // =================================================
         // JIKA BENAR
-        // =================================================
-
         if (
-            terdekat.nama ===
-            target.nama
+            terdekat.frekuensi ===
+            target.frekuensi
         ) {
 
             pilihNot();
 
         }
 
-
-        // =================================================
         // JIKA SALAH
-        // =================================================
-
         else {
 
-            // Nada tetap ditampilkan.
+            // Not tetap.
 
         }
 
@@ -807,7 +725,7 @@ function cekNada(freq) {
 
 
 // =====================================================
-// MULAI OTOMATIS
+// MULAI
 // =====================================================
 
 pilihNot();

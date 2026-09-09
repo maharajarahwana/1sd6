@@ -3,35 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>1sd6</title>
 
 <style>
 
-    * {
-        box-sizing: border-box;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    html, body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-    }
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-    canvas {
-        width: 100%;
-        max-width: 500px;
-        height: auto;
-    }
+canvas {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
 
 </style>
 </head>
@@ -43,7 +42,16 @@
 <script>
 
 // =====================================================
-// DAFTAR NADA
+// DAFTAR 18 NADA
+// =====================================================
+//
+// Senar 6:
+// E2 - F2 - G2
+//
+// Senar 5:
+// A2 - B2 - C3 - D3 - E3 - F3 - G3 - A3
+// B3 - C4 - D4 - E4 - F4 - G4 - A4
+//
 // =====================================================
 
 const nada = [
@@ -66,6 +74,7 @@ const nada = [
         nama: "G2",
         frekuensi: 98.00
     },
+
 
     // -----------------------------
     // SENAR 5
@@ -91,10 +100,6 @@ const nada = [
         frekuensi: 146.83
     },
 
-    // -----------------------------
-    // SENAR 4
-    // -----------------------------
-
     {
         nama: "E3",
         frekuensi: 164.81
@@ -109,10 +114,6 @@ const nada = [
         nama: "G3",
         frekuensi: 196.00
     },
-
-    // -----------------------------
-    // SENAR 3
-    // -----------------------------
 
     {
         nama: "A3",
@@ -129,10 +130,6 @@ const nada = [
         frekuensi: 261.63
     },
 
-    // -----------------------------
-    // SENAR 2
-    // -----------------------------
-
     {
         nama: "D4",
         frekuensi: 293.66
@@ -142,10 +139,6 @@ const nada = [
         nama: "E4",
         frekuensi: 329.63
     },
-
-    // -----------------------------
-    // SENAR 1
-    // -----------------------------
 
     {
         nama: "F4",
@@ -175,12 +168,7 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
-let target = null;
-
-
-// =====================================================
-// NOT SEBELUMNYA
-// =====================================================
+let target;
 
 let notSebelumnya = null;
 
@@ -198,18 +186,14 @@ function pilihNot() {
         pilihan =
             nada[
                 Math.floor(
-                    Math.random() *
-                    nada.length
+                    Math.random() * nada.length
                 )
             ];
 
     } while (
-
         nada.length > 1 &&
         pilihan.nama === notSebelumnya
-
     );
-
 
     target = pilihan;
 
@@ -217,7 +201,6 @@ function pilihNot() {
         target.nama;
 
     gambarNot();
-
 }
 
 
@@ -301,39 +284,54 @@ function gambarNot() {
 
 
     // =================================================
-    // POSISI 18 NOT
+    // POSISI NOT
     // =================================================
     //
-    // Dari bawah ke atas:
+    // Setiap kenaikan 1 nama nada = naik 15 pixel.
     //
-    // E F G A B C D E F G A B C D E F G A
-    //
-    // Setiap perpindahan satu not = 15 px
+    // A4 = 15
+    // G4 = 30
+    // F4 = 45
+    // E4 = 60
+    // D4 = 75
+    // C4 = 90
+    // B3 = 105
+    // A3 = 120
+    // G3 = 135
+    // F3 = 150
+    // E3 = 165
+    // D3 = 180
+    // C3 = 195
+    // B2 = 210
+    // A2 = 225
+    // G2 = 240
+    // F2 = 255
+    // E2 = 270
     //
     // =================================================
 
     const posisi = {
 
-        "E2": 285,
-        "F2": 270,
-        "G2": 255,
-        "A2": 240,
-        "B2": 225,
-        "C3": 210,
-        "D3": 195,
+        "A4": 15,
+        "G4": 30,
+        "F4": 45,
+        "E4": 60,
+        "D4": 75,
+        "C4": 90,
 
-        "E3": 180,
-        "F3": 165,
-        "G3": 150,
-        "A3": 135,
-        "B3": 120,
-        "C4": 105,
-        "D4": 90,
+        "B3": 105,
+        "A3": 120,
+        "G3": 135,
+        "F3": 150,
+        "E3": 165,
 
-        "E4": 75,
-        "F4": 60,
-        "G4": 45,
-        "A4": 30
+        "D3": 180,
+        "C3": 195,
+        "B2": 210,
+        "A2": 225,
+        "G2": 240,
+        "F2": 255,
+        "E2": 270
 
     };
 
@@ -348,87 +346,71 @@ function gambarNot() {
     // GARIS BANTU
     // =================================================
     //
-    // Garis bantu mengikuti visual contoh:
+    // Paranada:
     //
-    // E2 : 3 garis
-    // F2 : 3 garis
-    // G2 : 2 garis
-    // A2 : 2 garis
-    // B2 : 1 garis
-    // C3 : 1 garis
+    // garis atas    = 90
+    // garis         = 120
+    // garis         = 150
+    // garis         = 180
+    // garis bawah   = 210
     //
-    // F4 : 1 garis
-    // G4 : 1 garis
-    // A4 : 1 garis
+    // Not di atas 90:
+    // D4 = 75
+    // E4 = 60
+    // F4 = 45
+    // G4 = 30
+    // A4 = 15
+    //
+    // Not di bawah 210:
+    // A2 = 225
+    // G2 = 240
+    // F2 = 255
+    // E2 = 270
     //
     // =================================================
+
 
     let garisBantu = [];
 
 
     // -----------------------------
-    // BAGIAN BAWAH
+    // GARIS BANTU DI ATAS
     // -----------------------------
 
     if (
-        target.nama === "E2" ||
-        target.nama === "F2"
+        y < 90
     ) {
 
-        garisBantu = [
-            210,
-            240,
-            270
-        ];
+        for (
+            let gy = 90;
+            gy >= y;
+            gy -= 30
+        ) {
 
-    }
+            garisBantu.push(gy);
 
-    else if (
-        target.nama === "G2" ||
-        target.nama === "A2"
-    ) {
-
-        garisBantu = [
-            210,
-            240
-        ];
-
-    }
-
-    else if (
-        target.nama === "B2" ||
-        target.nama === "C3"
-    ) {
-
-        garisBantu = [
-            210
-        ];
+        }
 
     }
 
 
     // -----------------------------
-    // BAGIAN ATAS
+    // GARIS BANTU DI BAWAH
     // -----------------------------
 
-    else if (
-        target.nama === "F4" ||
-        target.nama === "G4"
+    if (
+        y > 210
     ) {
 
-        garisBantu = [
-            60
-        ];
+        for (
+            let gy = 210;
+            gy <= y;
+            gy += 30
+        ) {
 
-    }
+            garisBantu.push(gy);
 
-    else if (
-        target.nama === "A4"
-    ) {
-
-        garisBantu = [
-            30
-        ];
+        }
 
     }
 
@@ -451,7 +433,6 @@ function gambarNot() {
                 x + 35,
                 gy
             );
-
 
             ctx.strokeStyle =
                 "black";
@@ -735,9 +716,6 @@ function cekNada(freq) {
     const sekarang =
         Date.now();
 
-
-    // Mencegah satu petikan
-    // terbaca berkali-kali
 
     if (
         sekarang -
